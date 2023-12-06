@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://u57nvwhaylb8"]
+
+[ext_resource type="Script" path="res://physical_dice_3d.gd" id="1_ksd25"]
+[ext_resource type="Texture2D" uid="uid://di23pkirr0cfw" path="res://asset/Dice.svg" id="1_xpcps"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f8gs"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ampg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uk2vm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnmi5"]
+albedo_texture = ExtResource("1_xpcps")
+
+[node name="PhysicalDice3D" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_0f8gs")
+gravity_scale = 2.0
+script = ExtResource("1_ksd25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1ampg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_uk2vm")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnmi5")
+
+[node name="Points" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Marker1" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Marker2" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Marker3" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Marker4" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Marker5" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Marker6" type="Marker3D" parent="Points"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
