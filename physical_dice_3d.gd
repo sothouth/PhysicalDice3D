@@ -1,6 +1,9 @@
 extends RigidBody3D
 
 
+signal stop_rolling(int)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,7 +17,7 @@ func _process(delta):
 func _on_sleeping_state_changed():
 	if sleeping:
 		#Determine the dice points here.
-		print(rotation2points())
+		stop_rolling.emit(rotation2points())
 
 
 func rotation2points()->int:

@@ -11,4 +11,10 @@ func _ready():
 	for i in 10:
 		var dice=PHYSICAL_DICE_3D.instantiate()
 		dice.linear_velocity=Vector3(randf_range(l.x,r.x),randf_range(l.y,r.y),randf_range(l.z,r.z))
+		dice.stop_rolling.connect(_on_stop_rolling)
 		%Dices.add_child(dice)
+
+func _on_stop_rolling(n:int):
+	var item=Label.new()
+	item.text=str(n)
+	%Box.add_child(item)

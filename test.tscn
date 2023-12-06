@@ -41,3 +41,25 @@ shape = SubResource("BoxShape3D_fjayt")
 
 [node name="Dices" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.059
+anchor_right = 0.141
+anchor_bottom = 0.557
+offset_left = -0.384003
+offset_top = -0.232002
+offset_right = 0.567993
+offset_bottom = 0.0639648
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+horizontal_scroll_mode = 0
+
+[node name="Box" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
